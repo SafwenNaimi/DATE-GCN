@@ -73,6 +73,7 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 
       # Example: training ATEM-GCN on NTU RGB+D 120 cross subject under joint modality
+
       script_to_run = ['python', 'tools/train_model.py', 'configs/ntu120_xsub/j.py',
                  '--validate', '--test-last', '--test-best']
       
