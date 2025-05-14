@@ -19,3 +19,12 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
 
 <p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the ATEM-GCN block, (c) is the dynamic untangled adjacency module in the ATEM-GCN, and (d) is the adaptive temporal encoding module in the ATEM-GCN.</p>
 
+
+# Preparation
+
+
+    cd atemgcn
+    conda env create -f atemgcn.yaml
+    conda activate atemgcn
+    pip install -e .
+
