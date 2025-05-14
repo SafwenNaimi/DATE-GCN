@@ -42,8 +42,8 @@ Request dataset here: [http://rose1.ntu.edu.sg/Datasets/actionRecognition.asp](h
 
 Or download it from here: 
 
-                          [NTURGB+D 60]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu60_hrnet.pkl
+    [NTURGB+D 60]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu60_hrnet.pkl
 
-                          [NTURGB+D 120]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu120_hrnet.pkl
+    [NTURGB+D 120]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu120_hrnet.pkl
 
 
