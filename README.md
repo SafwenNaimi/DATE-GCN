@@ -59,9 +59,9 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
       - NW-UCLA/
         - nw-ucla.pkl
       - ntu/
-        - NTU60/
+        - NTU-60/
           - ntu60.pkl
-        - NTU120/
+        - NTU-120/
           - ntu120.pkl
 
 
