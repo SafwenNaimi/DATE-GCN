@@ -29,7 +29,7 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
     pip install -e .
 
 
-# Download datasets
+# Download Datasets
 
 There are 3 datasets to download:
 * NTU RGB+D 60 Skeleton
