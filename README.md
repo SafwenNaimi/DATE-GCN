@@ -94,4 +94,6 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 Please check the configuration in the configs directory before testing.
 
+      # Example: testing ATEM-GCN on NTU-60 X-Sub under the joint modality
+
       python tools/test.py configs/ntu60_xsub/j.py --eval mean_class_accuracy --checkpoint work_dirs/ntu60_xsub/j/latest.pth
