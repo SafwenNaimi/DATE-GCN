@@ -46,4 +46,6 @@ Or download it from here:
 
     [NTURGB+D 120]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu120_hrnet.pkl
 
+<strong>NW-UCLA<strong>
+
 
