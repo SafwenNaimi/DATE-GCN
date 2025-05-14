@@ -31,7 +31,7 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
 
 # Download Datasets
 
-1) There are 3 datasets to download:
+<em>1) There are 3 datasets to download:</em>
 
 * NTU RGB+D 60 Skeleton
 * NTU RGB+D 120 Skeleton
@@ -53,6 +53,6 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 
 
-2) Move the downloaded datasets to data/
+<em>2) Move the downloaded datasets to data/</em>
 
 
