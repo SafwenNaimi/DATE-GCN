@@ -1,5 +1,5 @@
 from mmcv import load, dump
-from pyskl.smp import *
+from atemgcn.smp import *
 
 joint = load('work_dirs/ntu60_xsub/j/result.pkl')
 bone = load('work_dirs/ntu60_xsub/b/result.pkl')
