@@ -67,4 +67,5 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 # Training & Testing
 
+<strong>Training</strong>
 
