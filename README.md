@@ -38,3 +38,5 @@ There are 3 datasets to download:
 
 <strong>NTU RGB+D 60 and 120<strong>
 
+Request dataset here: http://rose1.ntu.edu.sg/Datasets/actionRecognition.asp
+
