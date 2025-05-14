@@ -28,3 +28,5 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
     conda activate atemgcn
     pip install -e .
 
+
+# Download datasets
