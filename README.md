@@ -53,7 +53,7 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 
 
-<em>2) Move the downloaded datasets to:
+<em>2) Move the downloaded datasets to:<em>
 
     - data/
       - NW-UCLA/
