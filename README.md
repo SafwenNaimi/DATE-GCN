@@ -35,3 +35,6 @@ There are 3 datasets to download:
 * NTU RGB+D 60 Skeleton
 * NTU RGB+D 120 Skeleton
 * NW-UCLA
+
+## NTU RGB+D 60 and 120
+
