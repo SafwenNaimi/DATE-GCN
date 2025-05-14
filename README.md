@@ -2,6 +2,8 @@
 
 The official implementation of “ATEM-GCN: Unified Graph-Based Architecture With Dynamic Untangled Adjacency and Adaptive Temporal Encoding for Human Activity Recognition”.
 
+# Dynamic Untangled Adjacency Learning
+
 <p align="center">
   <img src="https://github.com/SafwenNaimi/ATEM-GCN/blob/main/dynamic_untangled_scheme.png" alt="ATEM-GCN visualization">
 </p>
