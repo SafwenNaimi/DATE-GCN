@@ -69,7 +69,7 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 <strong>Training</strong>
 
-* To train model on NTU RGB+D 60/120 with bone or motion modalities, modify line 4 in run.py here:
+* To train model on NTU RGB+D 60/120 with bone or motion modalities, modify line 4 in run.py and then execute it:
 
 
       # Example: training ATEM-GCN on NTU RGB+D 120 cross subject under joint modality
@@ -80,3 +80,12 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
       python run.py
 
 
+* To train model on NW-UCLA with bone or motion modalities, modify line 4 in run.py and then execute it:
+
+
+      # Example: training ATEM-GCN on NW-UCLA under bone motion modality
+
+      script_to_run = ['python', 'tools/train_model.py', 'configs/nwucla/jm.py',
+                 '--validate', '--test-last', '--test-best']
+      
+      python run.py
