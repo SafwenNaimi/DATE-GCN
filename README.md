@@ -30,3 +30,8 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
 
 
 # Download datasets
+
+There are 3 datasets to download:
+* NTU RGB+D 60 Skeleton
+* NTU RGB+D 120 Skeleton
+* NW-UCLA
