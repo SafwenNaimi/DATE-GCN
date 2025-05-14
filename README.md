@@ -58,7 +58,6 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
     - data/
       - NW-UCLA/
         - nw-ucla.pkl
-          ... # raw data of NW-UCLA
       - ntu/
         - ntu60/
           - ntu60.pkl
