@@ -37,7 +37,7 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
 * NTU RGB+D 120 Skeleton
 * NW-UCLA
 
-<strong>NTU RGB+D 60 and 120<strong>
+<strong>NTU RGB+D 60 and 120</strong>
 
 Request dataset here: [http://rose1.ntu.edu.sg/Datasets/actionRecognition.asp](https://rose1.ntu.edu.sg/dataset/actionRecognition/)
 
@@ -53,7 +53,7 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 
 
-<em>2) Move the downloaded datasets to:<em>
+<em>2) Move the downloaded datasets to:</em>
 
     - data/
       - NW-UCLA/
