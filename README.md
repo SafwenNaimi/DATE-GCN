@@ -53,6 +53,18 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 
 
-<em>2) Move the downloaded datasets to data/</em>
+<em>2) Move the downloaded datasets to:
+
+    - data/
+      - NW-UCLA/
+        - nw-ucla.pkl
+          ... # raw data of NW-UCLA
+      - ntu/
+        - ntu60/
+          - ntu60.pkl
+        - ntu120/
+          - ntu120.pkl
+
+
 
 
