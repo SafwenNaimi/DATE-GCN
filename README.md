@@ -47,7 +47,7 @@ Or download it from here:
 
     [NTURGB+D 120]: https://download.openmmlab.com/mmaction/pyskl/data/nturgbd/ntu120_hrnet.pkl
 
-<strong>NW-UCLA<strong>
+<strong>NW-UCLA</strong>
 
 Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zip?dl=0
 
