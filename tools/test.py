@@ -16,14 +16,14 @@ from mmcv.fileio.io import file_handlers
 from mmcv.parallel import MMDistributedDataParallel
 from mmcv.runner import get_dist_info, init_dist, load_checkpoint
 
-from pyskl.datasets import build_dataloader, build_dataset
-from pyskl.models import build_model
-from pyskl.utils import cache_checkpoint, mc_off, mc_on, test_port
+from atemgcn.datasets import build_dataloader, build_dataset
+from atemgcn.models import build_model
+from atemgcn.utils import cache_checkpoint, mc_off, mc_on, test_port
 
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description='pyskl test (and eval) a model')
+        description='atemgcn test (and eval) a model')
     parser.add_argument('config', help='test config file path')
     parser.add_argument('-C', '--checkpoint', help='checkpoint file', default=None)
     parser.add_argument(
