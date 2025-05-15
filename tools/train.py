@@ -12,11 +12,11 @@ from mmcv import digit_version as dv
 from mmcv.runner import get_dist_info, init_dist, set_random_seed
 from mmcv.utils import get_git_hash
 
-from pyskl import __version__
-from pyskl.apis import init_random_seed, train_model
-from pyskl.datasets import build_dataset
-from pyskl.models import build_model
-from pyskl.utils import collect_env, get_root_logger, mc_off, mc_on, test_port
+from atemgcn import __version__
+from atemgcn.apis import init_random_seed, train_model
+from atemgcn.datasets import build_dataset
+from atemgcn.models import build_model
+from atemgcn.utils import collect_env, get_root_logger, mc_off, mc_on, test_port
 
 
 def parse_args():
@@ -127,10 +127,8 @@ def main():
     cfg.workflow = cfg.get('workflow', [('train', 1)])
     assert len(cfg.workflow) == 1
     if cfg.checkpoint_config is not None:
-        # save pyskl version, config file content and class names in
-        # checkpoints as meta data
         cfg.checkpoint_config.meta = dict(
-            pyskl_version=__version__ + get_git_hash(digits=7),
+            atemgcn_version=__version__ + get_git_hash(digits=7),
             config=cfg.pretty_text)
 
     test_option = dict(test_last=args.test_last, test_best=args.test_best)
