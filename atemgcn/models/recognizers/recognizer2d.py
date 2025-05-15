@@ -1,4 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
 from torch import nn
 
 from ..builder import RECOGNIZERS
