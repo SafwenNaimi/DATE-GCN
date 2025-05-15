@@ -1,0 +1,60 @@
+model = dict(
+    type='RecognizerGCN',
+    backbone=dict(
+		type='MSG3D',
+        graph_cfg=dict(layout='coco', mode='binary_adj')),
+    cls_head=dict(type='GCNHead', num_classes=10, in_channels=384))
+
+dataset_type = 'PoseDataset'
+ann_file = '/lustre06/project/6071878/saf10/pyskl_2/data/final_ucla_hrnet.pkl'
+train_pipeline = [
+    dict(type='PreNormalize2D'),
+    dict(type='GenSkeFeat', dataset='coco', feats=['j']),
+    dict(type='UniformSample', clip_len=100),
+    dict(type='PoseDecode'),
+    dict(type='FormatGCNInput', num_person=2),
+    dict(type='Collect', keys=['keypoint', 'label'], meta_keys=[]),
+    dict(type='ToTensor', keys=['keypoint'])
+]
+val_pipeline = [
+    dict(type='PreNormalize2D'),
+    dict(type='GenSkeFeat', dataset='coco', feats=['j']),
+    dict(type='UniformSample', clip_len=100, num_clips=1),
+    dict(type='PoseDecode'),
+    dict(type='FormatGCNInput', num_person=2),
+    dict(type='Collect', keys=['keypoint', 'label'], meta_keys=[]),
+    dict(type='ToTensor', keys=['keypoint'])
+]
+test_pipeline = [
+    dict(type='PreNormalize2D'),
+    dict(type='GenSkeFeat', dataset='coco', feats=['j']),
+    dict(type='UniformSample', clip_len=100, num_clips=10),
+    dict(type='PoseDecode'),
+    dict(type='FormatGCNInput', num_person=2),
+    dict(type='Collect', keys=['keypoint', 'label'], meta_keys=[]),
+    dict(type='ToTensor', keys=['keypoint'])
+]
+data = dict(
+    videos_per_gpu=2,
+    workers_per_gpu=2,
+    test_dataloader=dict(videos_per_gpu=1),
+    train=dict(
+        type='RepeatDataset',
+        times=5,
+        dataset=dict(type=dataset_type, ann_file=ann_file, split='train', pipeline=train_pipeline)),
+    val=dict(type=dataset_type, ann_file=ann_file, split='test', pipeline=val_pipeline),
+    test=dict(type=dataset_type, ann_file=ann_file, split='test', pipeline=test_pipeline))
+
+# optimizer
+optimizer = dict(type='SGD', lr=0.005, momentum=0.9, weight_decay=0.0005, nesterov=True) #(lr=0.1)
+optimizer_config = dict(grad_clip=None)
+# learning policy
+lr_config = dict(policy='CosineAnnealing', min_lr=0, by_epoch=False)
+total_epochs = 50
+checkpoint_config = dict(interval=1)
+evaluation = dict(interval=1, metrics=['top_k_accuracy'])
+log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
+
+# runtime settings
+log_level = 'INFO'
+work_dir = '/lustre06/project/6071878/saf10/work_dirs/msg3d/msg3d_pyskl_nwucla_DynamicConvneXt_2/j'
