@@ -8,7 +8,7 @@ from ....utils.graph import k_adjacency, normalize_digraph
 from .init_func import bn_init, conv_init
 from .tcn import unit_tcn
 
-class MSGCN(nn.Module):
+class DUMA(nn.Module):
     def __init__(self, num_scales, in_channels, out_channels, base_A, dropout=0, act_cfg=dict(type='ReLU')):
         super().__init__()
         self.num_scales = num_scales
@@ -63,41 +63,8 @@ class MLP(nn.Module):
             x = layer(x)
         return x
 
-"""
-class MSGCN(nn.Module):
-    def __init__(self,
-                 num_scales,
-                 in_channels,
-                 out_channels,
-                 A,
-                 dropout=0,
-                 act_cfg=dict(type='ReLU')):
-        super().__init__()
-        self.num_scales = num_scales
 
-        A_powers = [k_adjacency(A, k, with_self=True) for k in range(num_scales)]
-        A_powers = np.stack([normalize_digraph(g) for g in A_powers])
-
-        # K, V, V
-        self.register_buffer('A', torch.Tensor(A_powers))
-        self.PA = nn.Parameter(self.A.clone())
-        nn.init.uniform_(self.PA, -1e-6, 1e-6)
-
-        self.mlp = MLP(in_channels * num_scales, [out_channels], dropout=dropout, act_cfg=act_cfg)
-
-    def forward(self, x):
-        N, C, T, V = x.shape
-        A = self.A
-        A = A + self.PA
-
-        support = torch.einsum('kvu,nctv->nkctu', A, x)
-        support = support.reshape(N, self.num_scales * C, T, V)
-        out = self.mlp(support)
-        return out
-"""
-
-# ! Notice: The implementation of MSTCN in MS-G3D is not the same as our implementation.
-class MSTCN(nn.Module):
+class ATEM(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -208,7 +175,7 @@ class UnfoldTemporalWindows(nn.Module):
         return x
 
 
-class ST_MSGCN(nn.Module):
+class ST_DUMA(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -269,7 +236,7 @@ class ST_MSGCN(nn.Module):
         return self.act(out)
 
 
-class MSG3DBlock(nn.Module):
+class ATEMGCNBlock(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -296,7 +263,7 @@ class MSG3DBlock(nn.Module):
 
         self.gcn3d = nn.Sequential(
             UnfoldTemporalWindows(window_size, window_stride, window_dilation),
-            ST_MSGCN(
+            ST_DUMA(
                 in_channels=self.embed_channels_in,
                 out_channels=self.embed_channels_out,
                 A=A,
@@ -322,7 +289,7 @@ class MSG3DBlock(nn.Module):
         return x
 
 
-class MW_MSG3DBlock(nn.Module):
+class MW_ATEMGCNBlock(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -334,7 +301,7 @@ class MW_MSG3DBlock(nn.Module):
 
         super().__init__()
         self.gcn3d = nn.ModuleList([
-            MSG3DBlock(
+            ATEMGCNBlock(
                 in_channels,
                 out_channels,
                 A,
