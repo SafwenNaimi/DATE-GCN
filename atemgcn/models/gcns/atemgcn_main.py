@@ -6,7 +6,7 @@ from ...utils.graph import Graph
 from ..builder import BACKBONES
 from .utils import MSGCN, MSTCN, MW_MSG3DBlock
 
-class ConvNeXtTemporal(nn.Module):
+class ATEM(nn.Module):
     def __init__(self, dim, kernel_size=7, drop_path=0.0):
         super().__init__()
         self.dwconv = nn.Conv2d(dim, dim, kernel_size=(kernel_size, 1), padding=(kernel_size // 2, 0), groups=dim)
@@ -59,26 +59,26 @@ class MSG3D(nn.Module):
         self.gcn3d1 = MW_MSG3DBlock(3, c1, A, num_g3d_scales, window_stride=1)
         self.sgcn1 = nn.Sequential(
             MSGCN(num_gcn_scales, 3, c1, A),
-            ConvNeXtTemporal(c1, c1),
-            ConvNeXtTemporal(c1, c1))
+            ATEM(c1, c1),
+            ATEM(c1, c1))
         self.sgcn1[-1].act = nn.Identity()
-        self.tcn1 = ConvNeXtTemporal(c1, c1)
+        self.tcn1 = ATEM(c1, c1)
 
         self.gcn3d2 = MW_MSG3DBlock(c1, c2, A, num_g3d_scales, window_stride=2)
         self.sgcn2 = nn.Sequential(
             MSGCN(num_gcn_scales, c1, c1, A),
-            ConvNeXtTemporal(c1, c2, stride=2),
-            ConvNeXtTemporal(c2, c2))
+            ATEM(c1, c2, stride=2),
+            ATEM(c2, c2))
         self.sgcn2[-1].act = nn.Identity()
-        self.tcn2 = ConvNeXtTemporal(c2, c2)
+        self.tcn2 = ATEM(c2, c2)
 
         self.gcn3d3 = MW_MSG3DBlock(c2, c3, A, num_g3d_scales, window_stride=2)
         self.sgcn3 = nn.Sequential(
             MSGCN(num_gcn_scales, c2, c2, A),
-            ConvNeXtTemporal(c2, c3),
-            ConvNeXtTemporal(c3, c3))
+            ATEM(c2, c3),
+            ATEM(c3, c3))
         self.sgcn3[-1].act = nn.Identity()
-        self.tcn3 = ConvNeXtTemporal(c3, c3)
+        self.tcn3 = ATEM(c3, c3)
 
     def forward(self, x):
         N, M, T, V, C = x.size()
