@@ -13,7 +13,7 @@ def readme():
     return content
 
 
-version_file = 'pyskl/version.py'
+version_file = 'atemgcn/version.py'
 
 
 def get_version():
@@ -100,7 +100,7 @@ def parse_requirements(fname='requirements.txt', with_version=True):
 
 if __name__ == '__main__':
     setup(
-        name='pyskl',
+        name='atemgcn',
         version=get_version(),
         description='A Toolbox for skeleton-based action recognition',
         long_description=readme(),
@@ -122,7 +122,7 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.8',
             'Programming Language :: Python :: 3.9',
         ],
-        url='https://github.com/kennymckormick/pyskl',
+        url='https://github.com/kennymckormick/atemgcn',
         license='Apache License 2.0',
         install_requires=parse_requirements('requirements.txt'),
         zip_safe=False)
