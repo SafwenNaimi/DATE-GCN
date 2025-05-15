@@ -17,7 +17,7 @@ The official implementation of “ATEM-GCN: Unified Graph-Based Architecture Wit
   <img src="https://github.com/SafwenNaimi/ATEM-GCN/blob/main/ATEM-GCN_Design.png" alt="ATEM-GCNN visualization">
 </p>
 
-<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the ATEM-GCN block, (c) is the dynamic untangled adjacency module in the ATEM-GCN, and (d) is the adaptive temporal encoding module in the ATEM-GCN.</p>
+<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the ATEM-GCN block, (c) is the dynamic untangled multi-scale adjacency (DUMA) module in the ATEM-GCN, and (d) is the adaptive temporal encoding (ATEM) module in the ATEM-GCN.</p>
 
 
 # Preparation
