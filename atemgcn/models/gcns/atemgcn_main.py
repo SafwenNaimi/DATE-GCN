@@ -55,7 +55,6 @@ class MSG3D(nn.Module):
         self.data_bn = nn.BatchNorm1d(self.num_point * in_channels * num_person)
         c1, c2, c3 = base_channels, base_channels * 2, base_channels * 4
 
-        # r=3 STGC blocks
         self.gcn3d1 = MW_MSG3DBlock(3, c1, A, num_g3d_scales, window_stride=1)
         self.sgcn1 = nn.Sequential(
             MSGCN(num_gcn_scales, 3, c1, A),
