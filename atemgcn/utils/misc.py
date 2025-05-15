@@ -1,5 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
-# flake8: noqa: E722
 import hashlib
 import logging
 import multiprocessing as mp
