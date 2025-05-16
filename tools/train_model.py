@@ -61,21 +61,14 @@ def main():
 
     cfg = Config.fromfile(args.config)
 
-    # set cudnn_benchmark
     if cfg.get('cudnn_benchmark', False):
         torch.backends.cudnn.benchmark = True
 
-    # work_dir is determined in this priority:
-    # config file > default (base filename)
     if cfg.get('work_dir', None) is None:
-        # use config filename as default work_dir if cfg.work_dir is None
         cfg.work_dir = osp.join('./work_dirs', osp.splitext(osp.basename(args.config))[0])
 
-    #if not hasattr(cfg, 'dist_params'):
-    #    cfg.dist_params = dict(backend='nccl')
 
     device = torch.device('cuda:0')
-    #init_dist(args.launcher, **cfg.dist_params)
     rank, world_size = get_dist_info()
     cfg.gpu_ids = range(world_size)
 
@@ -87,15 +80,12 @@ def main():
 
     # create work_dir
     mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
-    # dump config
     cfg.dump(osp.join(cfg.work_dir, osp.basename(args.config)))
-    # init logger before other steps
     timestamp = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     log_file = osp.join(cfg.work_dir, f'{timestamp}.log')
     logger = get_root_logger(log_file=log_file, log_level=cfg.get('log_level', 'INFO'))
 
-    # init the meta dict to record some important information such as
-    # environment info and seed, which will be logged
+
     meta = dict()
     # log env info
     env_info_dict = collect_env()
@@ -144,8 +134,6 @@ def main():
     memcached = cfg.get('memcached', False)
 
     if rank == 0 and memcached:
-        # mc_list is a list of pickle files you want to cache in memory.
-        # Basically, each pickle file is a dictionary.
         mc_cfg = cfg.get('mc_cfg', default_mc_cfg)
         assert isinstance(mc_cfg, tuple) and mc_cfg[0] == 'localhost'
         if not test_port(mc_cfg[0], mc_cfg[1]):
@@ -156,10 +144,8 @@ def main():
             retry -= 1
         assert retry >= 0, 'Failed to launch memcached. '
 
-    #dist.barrier()
 
     train_model(model, datasets, cfg, validate=args.validate, test=test_option, timestamp=timestamp, meta=meta)
-    #dist.barrier()
 
     if rank == 0 and memcached:
         mc_off()
