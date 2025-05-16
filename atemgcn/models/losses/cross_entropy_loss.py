@@ -63,14 +63,13 @@ class CrossEntropyLoss(BaseWeightedLoss):
 
             # default reduction 'mean'
             if self.class_weight is not None:
-                # Use weighted average as pytorch CrossEntropyLoss does.
-                # For more information, please visit https://pytorch.org/docs/stable/generated/torch.nn.CrossEntropyLoss.html # noqa
+
                 loss_cls = loss_cls.sum() / torch.sum(
                     self.class_weight.unsqueeze(0) * label)
             else:
                 loss_cls = loss_cls.mean()
         else:
-            # calculate loss for hard label
+
 
             if self.class_weight is not None:
                 assert 'weight' not in kwargs, \
