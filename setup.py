@@ -1,5 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
-# test doublepush
 from setuptools import find_packages, setup
 
 import re
@@ -23,26 +21,12 @@ def get_version():
 
 
 def parse_requirements(fname='requirements.txt', with_version=True):
-    """Parse the package dependencies listed in a requirements file but strips
-    specific versioning information.
-
-    Args:
-        fname (str): path to requirements file
-        with_version (bool, default=False): if True include version specs
-
-    Returns:
-        List[str]: list of requirements items
-
-    CommandLine:
-        python -c "import setup; print(setup.parse_requirements())"
-    """
 
     require_fpath = fname
 
     def parse_line(line):
         """Parse information from a line in a requirements text file."""
         if line.startswith('-r '):
-            # Allow specifying requirements in other files
             target = line.split(' ')[1]
             for info in parse_require_file(target):
                 yield info
@@ -53,7 +37,6 @@ def parse_requirements(fname='requirements.txt', with_version=True):
             elif '@git+' in line:
                 info['package'] = line
             else:
-                # Remove versioning from the package
                 pat = '(' + '|'.join(['>=', '==', '>']) + ')'
                 parts = re.split(pat, line, maxsplit=1)
                 parts = [p.strip() for p in parts]
@@ -62,8 +45,6 @@ def parse_requirements(fname='requirements.txt', with_version=True):
                 if len(parts) > 1:
                     op, rest = parts[1:]
                     if ';' in rest:
-                        # Handle platform specific dependencies
-                        # http://setuptools.readthedocs.io/en/latest/setuptools.html#declaring-platform-specific-dependencies
                         version, platform_deps = map(str.strip,
                                                      rest.split(';'))
                         info['platform_deps'] = platform_deps
@@ -87,7 +68,6 @@ def parse_requirements(fname='requirements.txt', with_version=True):
                 if with_version and 'version' in info:
                     parts.extend(info['version'])
                 if not sys.version.startswith('3.4'):
-                    # apparently package_deps are broken in 3.4
                     platform_deps = info.get('platform_deps')
                     if platform_deps is not None:
                         parts.append(';' + platform_deps)
@@ -97,32 +77,3 @@ def parse_requirements(fname='requirements.txt', with_version=True):
     packages = list(gen_packages_items())
     return packages
 
-
-if __name__ == '__main__':
-    setup(
-        name='atemgcn',
-        version=get_version(),
-        description='A Toolbox for skeleton-based action recognition',
-        long_description=readme(),
-        long_description_content_type='text/markdown',
-        author='Haodong Duan',
-        author_email='dhd.efz@gmail.com',
-        maintainer='Haodong Duan',
-        maintainer_email='dhd.efz@gmail.com',
-        packages=find_packages(exclude=('configs', 'tools', 'demo')),
-        keywords='computer vision, video understanding',
-        include_package_data=True,
-        classifiers=[
-            'Development Status :: 4 - Beta',
-            'License :: OSI Approved :: Apache Software License',
-            'Operating System :: OS Independent',
-            'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
-            'Programming Language :: Python :: 3.9',
-        ],
-        url='https://github.com/kennymckormick/atemgcn',
-        license='Apache License 2.0',
-        install_requires=parse_requirements('requirements.txt'),
-        zip_safe=False)
