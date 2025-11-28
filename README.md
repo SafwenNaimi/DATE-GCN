@@ -1,6 +1,6 @@
-# ATEM-GCN
+# DATE-GCN
 
-The official implementation of “ATEM-GCN: Unified Graph-Based Architecture With Dynamic Untangled Adjacency and Adaptive Temporal Encoding for Human Activity Recognition”.
+The official implementation of “Dynamic Untangled Adjacency Learning with Adaptive Temporal Encoding for Skeleton-Based Action Recognition”.
 
 # Dynamic Untangled Adjacency Learning
 
