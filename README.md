@@ -11,13 +11,13 @@ The official implementation of “Dynamic Untangled Adjacency Learning with Adap
 <p align="center"><strong>Figure 1:</strong> Proposed dynamic untangled multi-scale aggregation scheme. Node colors reflect joint-level attention, and darker cells indicate stronger message passing. As the action "Right Hand Waving" unfolds, attention shifts toward the moving hand, demonstrating the model ability to adaptively capture motion-relevant joints across time and scale.</p>
 
 
-# Illustration of ATEM-GCN
+# Illustration of DATE-GCN
 
 <p align="center">
   <img src="https://github.com/SafwenNaimi/ATEM-GCN/blob/main/ATEM-GCN_Design.png" alt="ATEM-GCNN visualization">
 </p>
 
-<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the ATEM-GCN block, (c) is the dynamic untangled multi-scale adjacency (DUMA) module in the ATEM-GCN, and (d) is the adaptive temporal encoding (ATEM) module in the ATEM-GCN.</p>
+<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the DATE-GCN block, (c) is the dynamic untangled multi-scale adjacency (DUMA) module in the DATE-GCN, and (d) is the adaptive temporal encoding (ATEM) module in the DATE-GCN.</p>
 
 
 # Preparation
@@ -69,10 +69,10 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 <strong>Training</strong>
 
-* To train ATEM-GCN on NTU RGB+D 60/120 with bone or motion modalities, modify line 4 in run.py and then execute it:
+* To train DATE-GCN on NTU RGB+D 60/120 with bone or motion modalities, modify line 4 in run.py and then execute it:
 
 
-      # Example: training ATEM-GCN on NTU RGB+D 120 cross subject under joint modality
+      # Example: training DATE-GCN on NTU RGB+D 120 cross subject under joint modality
 
       script_to_run = ['python', 'tools/train_model.py', 'configs/ntu120_xsub/j.py',
                  '--validate', '--test-last', '--test-best']
@@ -80,10 +80,10 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
       python run.py
 
 
-* To train ATEM-GCN on NW-UCLA with bone or motion modalities, modify line 4 in run.py and then execute it:
+* To train DATE-GCN on NW-UCLA with bone or motion modalities, modify line 4 in run.py and then execute it:
 
 
-      # Example: training ATEM-GCN on NW-UCLA under bone motion modality
+      # Example: training DATE-GCN on NW-UCLA under bone motion modality
 
       script_to_run = ['python', 'tools/train_model.py', 'configs/nwucla/jm.py',
                  '--validate', '--test-last', '--test-best']
@@ -92,9 +92,9 @@ Download dataset from here: https://www.dropbox.com/s/10pcm4pksjy6mkq/all_sqe.zi
 
 <strong>Test</strong>
 
-Please check the configuration in the configs directory before testing ATEM-GCN.
+Please check the configuration in the configs directory before testing DATE-GCN.
 
-     # Example: testing ATEM-GCN on NTU-60 X-Sub under the joint modality
+     # Example: testing DATE-GCN on NTU-60 X-Sub under the joint modality
 
      python tools/test.py configs/ntu60_xsub/j.py --eval mean_class_accuracy --checkpoint work_dirs/ntu60_xsub/j/latest.pth
 
