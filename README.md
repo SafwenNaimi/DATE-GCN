@@ -8,7 +8,7 @@ The official implementation of “Dynamic Untangled Adjacency Learning with Adap
 
 
 
-<p align="center"><strong>Figure 1:</strong> Proposed dynamic untangled multi-scale aggregation scheme. Node colors reflect joint-level attention, and darker cells indicate stronger message passing. As the action "Right Hand Waving" unfolds, attention shifts toward the moving hand, demonstrating the model ability to adaptively capture motion-relevant joints across time and scale.</p>
+<p align="center"><strong>Figure 1:</strong> Proposed scheme for Dynamic Untangled Multi-Scale Adjacency learning (DUMA) module. Node colors reflect joint-level attention, and darker cells indicate stronger message passing. As the action "Right Hand Waving" unfolds, attention shifts toward the moving hand, demonstrating the model ability to adaptively capture motion-relevant joints across time and scale. $\hat{\mathbf{A}}_t^{(s)}$ is the attention-modulated adjacency matrix, with t being the frame number and s being the scale number.</p>
 
 
 # Illustration of DATE-GCN
