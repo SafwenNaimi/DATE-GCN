@@ -17,7 +17,7 @@ The official implementation of “Dynamic Untangled Adjacency Learning with Adap
   <img src="https://github.com/SafwenNaimi/DATE-GCN/blob/main/DATE-GCN_architecture.png" alt="DATE-GCNN visualization">
 </p>
 
-<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the DATE-GCN block, (c) is the dynamic untangled multi-scale adjacency (DUMA) module in the DATE-GCN, and (d) is the adaptive temporal encoding (ATEM) module in the DATE-GCN.</p>
+<p align="center"><strong>Figure 2:</strong> Our proposed approach: (a) is the overall model architecture, (b) is the DATE-GCN block, (c) is the dynamic untangled multi-scale aggregation module (DUMA) in the DATE-GCN, and (d) is the adaptive temporal encoding (ATEM) module in the DATE-GCN.</p>
 
 
 # Preparation
