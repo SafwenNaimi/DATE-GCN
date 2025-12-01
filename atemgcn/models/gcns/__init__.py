@@ -1,2 +1,2 @@
-from .atemgcn import ATEMGCN  # noqa: F401, F403
+from .dategcn import DATEGCN  # noqa: F401, F403
 
