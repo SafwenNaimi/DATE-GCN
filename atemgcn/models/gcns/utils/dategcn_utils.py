@@ -236,7 +236,7 @@ class ST_DUMA(nn.Module):
         return self.act(out)
 
 
-class ATEMGCNBlock(nn.Module):
+class DATEGCNBlock(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -289,7 +289,7 @@ class ATEMGCNBlock(nn.Module):
         return x
 
 
-class MW_ATEMGCNBlock(nn.Module):
+class MW_DATEGCNBlock(nn.Module):
     def __init__(self,
                  in_channels,
                  out_channels,
@@ -301,7 +301,7 @@ class MW_ATEMGCNBlock(nn.Module):
 
         super().__init__()
         self.gcn3d = nn.ModuleList([
-            ATEMGCNBlock(
+            DATEGCNBlock(
                 in_channels,
                 out_channels,
                 A,
@@ -318,3 +318,4 @@ class MW_ATEMGCNBlock(nn.Module):
         for gcn3d in self.gcn3d:
             out_sum = out_sum + gcn3d(x)
         return out_sum
+
