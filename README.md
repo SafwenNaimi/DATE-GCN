@@ -23,9 +23,9 @@ The official implementation of “Dynamic Untangled Adjacency Learning with Adap
 # Preparation
 
 
-    cd atemgcn
-    conda env create -f atemgcn.yaml
-    conda activate atemgcn
+    cd dategcn
+    conda env create -f dategcn.yaml
+    conda activate dategcn
     pip install -e .
 
 
